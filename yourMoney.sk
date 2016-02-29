@@ -29,7 +29,7 @@ command /yourmoney [<text>] [<text>] [<text>]:
 					send "&2ma na celu urozmaicenie rozgrywki w pieniadze."
 					send "&2Zeby zaczac zabawe z pieniedzmi mozesz uzyc komend:"
 					send "&7/ym pay <nick> <kwota>"
-					send "&7/ym transfer <bank/portfel> <kwota> (przelewa z banku do portfela/na odwrot)"
+					send "&7/ym transfer portfel <kwota> (przelewa z banku do portfela)"
 					send "&2Balans konta: "
 					send "&7Bank: %{yourmoney.bank.%player%}%"
 					send "&7Portfel: %{yourmoney.portfel.%player%}%"
@@ -45,11 +45,12 @@ command /yourmoney [<text>] [<text>] [<text>]:
 						send "{@tag}&8Dostales %{_kwota}%" to {_doc}
 		if arg 3 is set:
 			set {_trkwota} to arg 3 parsed as number
-			if arg 2 is "bank" or "portfel":
+			if arg 2 is "portfel":
 				if arg 1 is "transfer":
 					if {yourmoney.%arg 2%.%player%} is greater than {_trkwota}:
-						send "{@tag}&8Przelano do %arg 2% kwote %{trkwota}%"
-						add {_trkwota} to {yourmoney.%arg 2%.%player%}
+						send "{@tag}&8Przelano do portfela kwote %{trkwota}%"
+						add {_trkwota} to {yourmoney.portfel.%player%}
+						reduce {yourmoney.bank.%player%} by (_trkwota}
 every 2 real hours:
 	loop all players:
 		add 10 to {yourmoney.bank.%loop player%}
