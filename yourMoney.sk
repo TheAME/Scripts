@@ -1,0 +1,55 @@
+#------------------------------------#
+#Created by AMEthystine (Candy/TheAME)
+#Skrypt nie bedzie dalej rozwijany!!! poprawiam tylko bledy.
+#---------------------------------------#
+
+
+
+variables:
+	{yourmoney.portfel.%player%} = 0
+	{yourmoney.bank.%player%} = 0
+options:
+	tag: &8\ &2&lyourMONEY  &8\
+
+#Linijka awaryjna, uzywac w przypadku problemu z pieniedzmi.(<none>)
+
+#on join:
+#	set {yourmoney.portfel.%player%} to 0
+#	set {yourmoney.bank.%player%} to 0
+
+
+command /yourmoney [<text>] [<text>] [<text>]:
+	aliases: ym, ymoney, yourm
+	trigger:
+		if arg 3 is not set:
+			if arg 2 is not set:
+				if arg 1 is not set:
+					send "                  {@tag}               "
+					send "&2yourMoney, Jest to skrypt autorstwa ame,"
+					send "&2ma na celu urozmaicenie rozgrywki w pieniadze."
+					send "&2Zeby zaczac zabawe z pieniedzmi mozesz uzyc komend:"
+					send "&7/ym pay <nick> <kwota>"
+					send "&7/ym transfer <bank/portfel> <kwota> (przelewa z banku do portfela/na odwrot)"
+					send "&2Balans konta: "
+					send "&7Bank: %{yourmoney.bank.%player%}%"
+					send "&7Portfel: %{yourmoney.portfel.%player%}%"
+		if arg 3 is set:
+			set {_doc} to argument 2 parsed as player
+			if arg 2 is set:
+				if arg 1 is "pay":
+					set {_kwota} to arg 3 parsed as number
+					if {yourmoney.bank.%player%} is greater than {_kwota}:
+						send "{@tag}&8Przelano kwote %{_kwota}% z banku"
+						reduce {zmienna} by {_kwota}
+						add {_kwota} to {yourmoney.bank.%arg 2%}
+						send "{@tag}&8Dostales %{_kwota}%" to {_doc}
+		if arg 3 is set:
+			set {_trkwota} to arg 3 parsed as number
+			if arg 2 is "bank" or "portfel":
+				if arg 1 is "transfer":
+					if {yourmoney.%arg 2%.%player%} is greater than {_trkwota}:
+						send "{@tag}&8Przelano do %arg 2% kwote %{trkwota}%"
+						add {_trkwota} to {yourmoney.%arg 2%.%player%}
+every 2 real hours:
+	loop all players:
+		add 10 to {yourmoney.bank.%loop player%}
