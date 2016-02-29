@@ -19,7 +19,7 @@ options:
 
 
 command /yourmoney [<text>] [<text>] [<text>]:
-	aliases: ym, ymoney, yourm, money, cash, coin, 
+	aliases: ym,money,cash,coin
 	trigger:
 		if arg 3 is not set:
 			if arg 2 is not set:
@@ -54,3 +54,4 @@ command /yourmoney [<text>] [<text>] [<text>]:
 every 2 real hours:
 	loop all players:
 		add 10 to {yourmoney.bank.%loop player%}
+
