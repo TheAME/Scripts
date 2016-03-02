@@ -1,4 +1,4 @@
-#Created by TheAME
+#Created by AMEthystine (Candy/TheAME)
 variables:
 	{marry.%player%} = false
 	{wybor.%player%} = false
