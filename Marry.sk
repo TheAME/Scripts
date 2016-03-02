@@ -26,7 +26,6 @@ command /marry [<text>] [<player>]:
 					send "&5/marry deny - odrzuc" to {_doc}
 					set {wybor.%{_doc}%} to true
 				else:
-					stop
 					send "&5Zdrada??"
 		if arg 1 is "accept":
 			if {wybor.%player%} is true:
