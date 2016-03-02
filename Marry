@@ -1,0 +1,9 @@
+#Created by TheAME
+variables:
+	{marry.%player%} = 0
+options:
+	tag: &4&l <3 &d Marry &4&l <3
+command /marry [<text>] [<player>]:
+	trigger:
+		if arg 1 is not set:
+			send "
