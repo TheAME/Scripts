@@ -1,0 +1,69 @@
+#Created by TheAME
+variables:
+	{marry.%player%} = false
+	{wybor.%player%} = false
+	{marry.chat.%player%} = false
+options:
+	tag:              &4&l <3 &d Marry &4&l <3
+command /marry [<text>] [<player>]:
+	trigger:
+		if arg 1 is not set:
+			send "{@tag}"
+			send "&4&l<3&d/marry with <gracz>"
+			send "&4&l<&7/&4&l3&d/marry divorce"
+			send "&l"
+			send "&4&l<3&d/marry chat"
+			send "&4&l<3&d/marry gift"
+		if arg 1 is "with":
+			if arg player is set:
+				if {marry.%player%} is false:
+					set {_player} to %player%
+					set {_doc} to %arg 2%
+					broadcast "{@tag}"
+					broadcast "&5%{_player}% chce ozenic sie z %{_doc}%"
+					send "&5%{_player}% chce sie z toba ozenic" to {_doc}
+					send "&5/marry accept - ozen sie" to {_doc}
+					send "&5/marry deny - odrzuc" to {_doc}
+					set {wybor.%{_doc}%} to true
+				else:
+					stop
+					send "&5Zdrada??"
+		if arg 1 is "accept":
+			if {wybor.%player%} is true:
+				broadcast "{@tag}"
+				broadcast "&5%{_player}% ozenil sie z %{_doc}%"
+				set {wybor.%player%} to false
+				set {marry.%player%} to true
+			else:
+				send "&5Nie masz zaproszenia"
+		if arg 1 is "deny":
+			if {wybor.%player%} is true:
+				broadcast "{@tag}"
+				broadcast "&5%{_doc}% sie nie zgodzil. Siara :<"
+				set {wybor.%player%} to false
+			else:
+				send "&5Nie masz zaproszenia"
+		if arg 1 is "gift":
+			if {marry.%player%} is true:
+				send "&5Dales/as prezent swojej/emu zonie/mezowi"
+				send "&5Dostales/alas prezent" to {_doc}
+				add 1 diamond to {_doc}
+		if arg 1 is "chat":
+			if {marry.%player%} is true:
+				if {marry.chat.%player%} is false:
+					set {marry.chat.%player%} to true
+					send "&5Wlaczyles chat malzenstwa"
+				else:
+					set {marry.chat.%player%} to false
+					send "&5Wylaczyles chat malzenstwa"
+			else:
+				stop
+				send "&5Nie masz zony/meza"
+on quit:
+	if {wybor.%player%} is true:
+		set {wybor.%player%} to false
+on chat:
+	if {marry.chat.%player%} is true:
+		cancel event
+		send "&d%displayname of player% &7- &5%message%" to {_doc}
+		
