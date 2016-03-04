@@ -1,0 +1,15 @@
+options:
+  min: 15
+variables:
+  {decode.mozesz} = false
+every {@min} minutes:
+  replace {code} to random integer between 0 and 9
+  send "&3&ldeCode&7:&fPrzepisz kod: %{_code}% " to all players
+  set {decode.mozesz} to true
+on chat:
+  if message contains is "%{code}%":
+    if {decode.mozesz} is true:
+      send "&3&ldeCode&7:&f%player% przepisal kod!" to all players
+      set {decode.mozesz} to false
+
+        
