@@ -11,3 +11,4 @@ on chat:
 		if {decode.mozesz} is true:
 			send "&3&ldeCode&7:&f%player% przepisal kod!" to all players
 			set {decode.mozesz} to false
+			add 1 diamond to player
