@@ -4,7 +4,7 @@ variables:
   {decode.mozesz} = false
 every {@min} minutes:
   replace {code} to random integer between 0 and 9
-  send "&3&ldeCode&7:&fPrzepisz kod: %{_code}% " to all players
+  send "&3&ldeCode&7:&fPrzepisz kod: %{code}% " to all players
   set {decode.mozesz} to true
 on chat:
   if message contains is "%{code}%":
