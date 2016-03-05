@@ -4,4 +4,4 @@ command /illu [<text>]:
 
 on command /illu:
   if {confirmed.%player%} is false:
-    kick player due to "&8/\%nl%&8/__\%nl%&8/____\%nl%&8/______\%nl%&8/________\%nl%&8/__________\%nl%&3&lIlluminati confirmed.
+    kick player due to "&8/\%nl%&8/__\%nl%&8/____\%nl%&8/______\%nl%&8/________\%nl%&8/__________\%nl%&3&lIlluminati confirmed."
