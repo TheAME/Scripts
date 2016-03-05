@@ -1,9 +1,0 @@
-on sign change:
-  if line 1 is "[LolWars]":
-    set line 1 to "&8[&2LolWars&8]"
-    set line 2 to "%{Players}%"
-    if {players} is greater than "15":
-      set line 3 to "&4Pelna"
-    else:
-      set line 3 to "&awolna"
-      
