@@ -1,0 +1,9 @@
+on rightclick with sugar:
+  if name of player's tool is "&3&ldeArena>&2Dolacz":
+    add player to {deArena::wolni}
+    loop {deArena::wolni}:
+      
+  if name of player's tool is "&3&ldeArena>&cWyjdz":
+    remove player from {deArena::wolni}
+    remove player from {deArena::zajeci}
+if player is in {deArena::wolni}
