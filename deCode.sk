@@ -1,5 +1,5 @@
 options:
-	min: 1
+	min: 15
 variables:
 	{decode.mozesz} = false
 every {@min} minutes:
