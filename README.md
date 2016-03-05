@@ -1,3 +1,3 @@
 # Scripts
-Skrypty od ame :p
+Skrypty formatycznego :p
 Zakaz kopiowania !
