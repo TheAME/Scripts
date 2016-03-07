@@ -8,7 +8,10 @@ on chat:
         send json "{@format}" tooltip "&3CLICK" run "/channel" to loop-player
         send json "&8%message%" tooltip "&3CLICK" run "/channel" to loop-player
       else:
-        send 
+  else:
+    loop {rooms::admin}:
+      send json "{@format}" tooltip "&3CLICK" run "/channel" to loop-player
+      send json "&8%message%" tooltip "&3CLICK" run "/channel" to loop-player
 on join:
   clear join message
   wait 1 second
