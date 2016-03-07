@@ -4,8 +4,11 @@ on chat:
   cancel event
   if player doesn't have permission "rooms.admin":
     loop {rooms::normal}:
-      send json "{@format}" tooltip "&3CLICK" run "/channel" to loop-player
-      send json "&8%message%" tooltip "&3CLICK" run "/channel" to loop-player
+      if {rooms.sesja.%player%} is false:
+        send json "{@format}" tooltip "&3CLICK" run "/channel" to loop-player
+        send json "&8%message%" tooltip "&3CLICK" run "/channel" to loop-player
+      else:
+        send 
 on join:
   clear join message
   wait 1 second
