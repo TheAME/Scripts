@@ -1,0 +1,20 @@
+options:
+  format: %displayname of player%&7:
+on chat:
+  cancel event
+  if player doesn't have permission "rooms.admin":
+    loop {rooms::normal}:
+      send json "{@format}" tooltip "&3CLICK" run "/channel" to loop-player
+      send json "&8%message%" tooltip "&3CLICK" run "/channel" to loop-player
+on join:
+  clear join message
+  wait 1 second
+  loop 101 times:
+    send "&l"
+  send "&3Kliknij na jakas wiadomosc"
+  send "&3Innych graczy zeby zmienic pokoj"
+on quit:
+  clear quit message
+  
+    
+    
