@@ -14,7 +14,7 @@ command /luckywars [<text>] [<text>] [<text>]:
         if arg 2 is set:
           if arg 3 parsed as number and greater than 1:
             send "&6Dodano mape &6%arg 2% &c[%arg 3% slot]
-            
+            set {maxslot.%arg 2%} to arg 3
       if arg 1 is "remove":
       if arg 1 is "additem":
       if arg 1 is "remitem":
