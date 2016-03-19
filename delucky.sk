@@ -1,0 +1,24 @@
+
+command /luckywars [<text>] [<text>] [<text>]:
+  aliases: lw, lucky, wars, lwars, luckyw
+  trigger:
+    if arg 1 is not "add" or "remove" or "leave" or "join" or "setlobby" or "additem" or "remitem" or "setspawn":
+      send "&cnope!"
+      send "&c/lw [join/leave/add/remove/setlobby/additem/remitem/setspawn]"
+    if player has permission "lw.*":
+      if arg 1 is "setspawn":
+        loop {arenas::*}:
+          if loop-value is arg 2:
+            if arg 3 is 
+      if arg 1 is "add":
+        if arg 2 is set:
+          if arg 3 parsed as number and greater than 1:
+            send "&6Dodano mape &6%arg 2% &c[%arg 3% slot]
+            
+      if arg 1 is "remove":
+      if arg 1 is "additem":
+      if arg 1 is "remitem":
+    else:
+      send "&cnope!<brak uprawnien>"
+      
+      
