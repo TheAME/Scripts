@@ -58,3 +58,6 @@ on rightclick on sign:
     loop {arenas::*}:
       if line 2 is loop-value:
         make player command "/lw join %line 2%"
+on break head:
+  loop {ity::*}:
+    drop random item out of {ity::*}
