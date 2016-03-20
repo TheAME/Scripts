@@ -8,17 +8,41 @@ command /luckywars [<text>] [<text>] [<text>]:
     if player has permission "lw.*":
       if arg 1 is "setspawn":
         loop {arenas::*}:
-          if loop-value is arg 2:
-            if arg 3 is 
+          if arg 2 is loop-value:
+            if arg 3 parsed as number is smaller than {maxslot.%arg 2%}:
+              set {spawn.%arg 3%} to location of player
+              send "&3&l%arg 2%&8>>&cSpawn &6%arg 3% &custawiony!
       if arg 1 is "add":
         if arg 2 is set:
-          if arg 3 parsed as number and greater than 1:
-            send "&6Dodano mape &6%arg 2% &c[%arg 3% slot]
-            set {maxslot.%arg 2%} to arg 3
+          loop {arenas::*}:
+            if arg 2 is not loop-value:
+              if arg 3 parsed as number is greater than 1:
+                send "&6Dodano mape &6%arg 2% &c[%arg 3% slot]
+                set {maxslot.%arg 2%} to arg 3
+                add arg 2 to {arenas::*}
+              else:
+                send "&cSloty musza byc wieksze od 1"
+            else:
+              send "&cTaka mapa juz istnieje"
+        else:
+          send "&cPodaj nazwe mapy"
       if arg 1 is "remove":
+        if arg 2 is set:
+          loop {arenas::*}:
+            if arg 2 is loop-value:
+              remove arg 2 from {arenas::*}
+              clear {maxslot.%arg 2}
+              send "&cUsunieto mape &6%arg 2%"
       if arg 1 is "additem":
+        add player's tool to {ity::*}
+        send "&cDodales item w rece do luckyblocka ID:"
       if arg 1 is "remitem":
+        loop {
     else:
       send "&cnope!<brak uprawnien>"
+    if arg 1 is "join":
+      if arg 2 is set:
+        loop {arenas::*}
+    if arg 1 is "leave":
       
       
