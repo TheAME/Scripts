@@ -44,5 +44,17 @@ command /luckywars [<text>] [<text>] [<text>]:
       if arg 2 is set:
         loop {arenas::*}
     if arg 1 is "leave":
-      
-      
+      if {status.%player%} is "yep":
+        
+on sing change:
+  if line 1 is "[lw]":
+    loop {arenas::*}:
+      if line 2 is loop-value:
+        set line 1 to "&3LuckyWars"
+        set line 2 to "&6%loop-value%"
+        set line 3 to "&6%{maxslot.%loop-value%}%"
+on rightclick on sign:
+  if line 1 is "&3LuckyWars":
+    loop {arenas::*}:
+      if line 2 is loop-value:
+        make player command "/lw join %line 2%"
